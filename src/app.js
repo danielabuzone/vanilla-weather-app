@@ -53,6 +53,23 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 }
+function fetchPosition(position) {
+  let apiKey = "3a8f31bb8f5c83717d5b200c7e6f4785";
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(showTemperature);
+}
+function searchMe(event) {
+  navigator.geolocation.getCurrentPosition(fetchPosition);
+}
+
+let input = document.querySelector("#search-now");
+input.addEventListener("click", searchMe);
+
+if ((input = null)) {
+  input = `navigator.geolocation.getCurrentPosition(fetchPosition)`;
+}
 
 function search(city) {
   let apiKey = "3a8f31bb8f5c83717d5b200c7e6f4785";
@@ -65,8 +82,6 @@ function searchSubmit(event) {
   let searchInputElement = document.querySelector("#search-input");
   search(searchInputElement.value);
 }
-
-search("New York");
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchSubmit);
