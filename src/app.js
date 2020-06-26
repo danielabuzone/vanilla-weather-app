@@ -29,6 +29,8 @@ function formatHours(timestamp) {
 }
 
 function showTemperature(response) {
+  celsiusTemperature = response.data.main.temp;
+
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
 
@@ -56,6 +58,7 @@ function showTemperature(response) {
 
 function search(city) {
   let apiKey = "3a8f31bb8f5c83717d5b200c7e6f4785";
+
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
@@ -79,10 +82,32 @@ function searchMe(event) {
 
 let input = document.querySelector("#search-now");
 input.addEventListener("click", searchMe);
-
-if (input.value.length == 0) {
+//
+if (input.value.length >= 0) {
   input = `navigator.geolocation.getCurrentPosition(fetchPosition)`;
 }
 
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+let celsiusTemperature = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchSubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsiusTemp);
+
+ipLookUp();
