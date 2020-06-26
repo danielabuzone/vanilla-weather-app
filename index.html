@@ -9,6 +9,7 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
     <title>Weather App</title>
   </head>
@@ -16,12 +17,10 @@
     <div class="container">
       <div class="weather-app">
         <div class="overview">
-          <h1>New York</h1>
+          <h1 id="city"></h1>
           <ul>
-            <li>
-              Friday 05:00
-            </li>
-            <li>
+            <li id="date"></li>
+            <li id="conditions">
               Clear
             </li>
           </ul>
@@ -29,13 +28,9 @@
         <div class="row">
           <div class="col-6">
             <div class="clearix weather-temperature">
-              <img
-                src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-                alt="Clear"
-                class="float-left"
-              />
+              <img src="src/img/claudy.png" alt="clear" class="float-left" />
               <div class="float-letf">
-                <strong>12</strong>
+                <strong id="temperature"></strong>
                 <span class="units"
                   ><a href="#" id="celsius-link" class="active">°C</a> |
                   <a href="#" id="fahrenheit-link">°F</a></span
@@ -45,15 +40,8 @@
           </div>
           <div class="col-md-6">
             <ul>
-              <li>
-                Precipitation: 0%
-              </li>
-              <li>
-                Humidity: 30%
-              </li>
-              <li>
-                Wind: 10%
-              </li>
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind"></span>km/h</li>
             </ul>
           </div>
           <small>
