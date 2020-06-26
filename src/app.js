@@ -56,11 +56,26 @@ function showTemperature(response) {
   );
 }
 
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#hourly");
+  let forecast = response.data.list[0];
+
+  forecastElement.innerHTML = `<div class="col-2">
+            <h3>12:00</h3>
+           <img src="" id="icon" class="float-left" alt="day1" />
+           <div class="weather-forecast-temperature"> <strong>${forecast.main.temp_max}</strong> 57°
+          </div>
+          </div> `;
+}
+
 function search(city) {
   let apiKey = "3a8f31bb8f5c83717d5b200c7e6f4785";
 
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function searchSubmit(event) {
@@ -109,5 +124,3 @@ fahrenheitLink.addEventListener("click", showFahrenheitTemp);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemp);
-
-ipLookUp();
