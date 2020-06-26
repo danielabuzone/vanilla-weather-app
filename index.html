@@ -16,19 +16,30 @@
   <body>
     <div class="container">
       <div class="weather-app">
+        <form id="search-form">
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="city-name" class="sr-only">Search City</label>
+            <input
+              type="search"
+              class="form-control"
+              id="search-input"
+              placeholder="Search for city"
+              aria-autocomplete="off"
+            />
+            <input id="search-now" type="submit" valeu="Search" />
+          </div>
+        </form>
         <div class="overview">
-          <h1 id="city"></h1>
+          <h1 id="city">Waiting for you...</h1>
           <ul>
             <li id="date"></li>
-            <li id="conditions">
-              Clear
-            </li>
+            <li id="conditions"></li>
           </ul>
         </div>
         <div class="row">
           <div class="col-6">
             <div class="clearix weather-temperature">
-              <img src="src/img/claudy.png" alt="clear" class="float-left" />
+              <img src="" id="icon" class="float-left" />
               <div class="float-letf">
                 <strong id="temperature"></strong>
                 <span class="units"
@@ -44,17 +55,17 @@
               <li>Wind: <span id="wind"></span>km/h</li>
             </ul>
           </div>
-          <small>
-            <a
-              href="https://github.com/danielabuzone/vanilla-weather-app"
-              target="_blank"
-              >Coded by Daniela Buzone</a
-            >
-          </small>
         </div>
+        <div id="forecast"></div>
       </div>
-      <a href="" class="btn btn-primary">Click Me</a>
+      <a
+        id="btn"
+        href="https://github.com/danielabuzone/vanilla-weather-app"
+        class="btn btn-primary"
+        >Coded by Daniela Buzone</a
+      >
     </div>
+
     <script src="src/app.js"></script>
   </body>
 </html>

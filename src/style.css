@@ -60,3 +60,15 @@ li {
   font-size: 16px;
   top: -34px;
 }
+
+.btn {
+  background-image: linear-gradient(315deg, #ffffff 0%, #5899e2 74%);
+  color: rgb(48, 47, 47);
+  display: block;
+  border-radius: 30px;
+  padding: 5px;
+  border: 5px;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 5px;
+}
