@@ -113,6 +113,7 @@ function searchMe(event) {
 
 let input = document.querySelector("#search-now");
 input.addEventListener("click", searchMe);
+
 //
 if (input.value.length >= 0) {
   input = `navigator.geolocation.getCurrentPosition(fetchPosition)`;
