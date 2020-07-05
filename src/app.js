@@ -118,7 +118,6 @@ input.addEventListener("click", searchMe);
 if (input.value.length >= 0) {
   input = `navigator.geolocation.getCurrentPosition(fetchPosition)`;
 }
-
 function showFahrenheitTemp(event) {
   event.preventDefault();
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
@@ -141,3 +140,5 @@ fahrenheitLink.addEventListener("click", showFahrenheitTemp);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemp);
+
+search("Vancouver");
